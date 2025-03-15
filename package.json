@@ -1,7 +1,7 @@
 {
   "name": "my-react-app",
   "private": true,
-  "homepage": "https://txt1stparkuor.github.io/my-react-app",
+  "homepage": "https://txt1stparkuor.github.io/hit-react-2025",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,8 +9,11 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "start": "react-scripts start",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "gh-pages": "^6.3.0",
