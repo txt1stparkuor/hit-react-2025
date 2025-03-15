@@ -1,0 +1,124 @@
+/* Header.module.css (Adjusted - :root block removed) */
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0);
+    left: 0;
+    right: 0;
+    padding: 20px 1rem;
+    transition: background-color 0.3s;
+    box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+.scrolledHeader {
+    background-color: rgba(14, 29, 52, 0.9);
+    padding: 10px 0;
+}
+
+
+.logo {
+    font-size: var(--fs-logo);
+    font-weight: 700;
+    color: #ffffff;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.main-menu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.main-menu> li {
+    padding: 18px 15px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+.main-menu > li > a {
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.25s;
+}
+.main-menu > li > a:hover {
+    color: #ffffff;
+}
+.main-menu .active {
+    color: #ffffff;
+}
+.dropdown i {
+    font-size: 0.75rem;
+    vertical-align: middle;
+}
+.dropdown {
+    position: relative;
+}
+.dropdown a {
+    color: #212529;
+    transition: all 0.25s;
+}
+.dropdown a:hover {
+    color: #0d42ff;
+}
+.sub-menu {
+    position: absolute;
+    top: 100%;
+    transform: scale(0);
+    transform-origin: top;
+    transition: all 0.5s;
+    opacity: 0;
+    left: 0;
+    padding: 10px 0;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    color: #212529;
+    font-size: var(--fs-body-sm);
+}
+.sub-menu > li {
+    white-space: nowrap;
+    padding: .5rem 1rem;
+}
+
+.dropdown:hover > .sub-menu {
+    transform: scale(1);
+    opacity: 1;
+}
+.side-menu {
+    top: 0;
+    right: 100%;
+    left: auto;
+    transform-origin:top right;
+}
+
+.btn {
+    padding: 10px 25px;
+    border-radius: 4px;
+    background-color: #0d42ff;
+    color: #ffffff;
+    border: none;
+    align-self: center;
+}
+.btn:hover {
+    background-color: #0d41ffd2;
+}
+.main-menu .mobile-nav-toggle{
+    font-size: 1.75rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    display: none;
+}
+/* reponsive */
+@media (width <=1200px) {
+    .main-menu> li:not(.mobile-nav-toggle):not(.btn-wrap) {
+        display: none;
+    }
+    .main-menu .mobile-nav-toggle {
+        display: block;
+    }
+}
