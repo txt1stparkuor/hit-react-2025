@@ -1,0 +1,66 @@
+.toggle-container {
+  width: 80px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  justify-content: space-between;
+}
+
+.on {
+  background: #00aaff;
+}
+
+.off {
+  background: #ccc;
+}
+
+.toggle-label {
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+
+.left {
+  left: 14px;
+  color: #666;
+}
+
+.right {
+  right: 10px;
+  color: #fff;
+}
+
+.toggle-button {
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
+  position: absolute;
+}
+.inner-circle {
+  width: 12px;
+  height: 12px;
+  background-color: #00aaff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.on .toggle-button {
+  transform: translateX(38px);
+}
+.off .toggle-button .inner-circle {
+    background-color: #ccc ;
+}

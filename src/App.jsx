@@ -1,10 +1,11 @@
 import { useState } from "react";
-import User from "./components/User/User";
+import ToggleButton from "./components/ToggleButton/ToggleButton";
 function App() {
   return (
-    <User></User>
-  )
+    <>
+      <ToggleButton></ToggleButton>
+    </>
+  );
 }
 
 export default App;
-
