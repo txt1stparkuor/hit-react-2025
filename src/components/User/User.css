@@ -1,0 +1,32 @@
+
+td{
+  border-bottom: 2px solid #dfdfdf;
+}
+.users {
+    font-weight: 500;
+    box-shadow: rgba(28, 28, 28, 0.12) 0px 4px 18px;
+    border-collapse: collapse;
+    border-bottom:3px solid #019879;
+}
+.users tr td {
+    padding: .125rem .5rem;
+}
+.first-row{
+    background-color: #019879;
+    color: #fafdf8;
+}
+.first-row > * {
+    padding: .75rem .5rem !important;
+}
+.first-row td:nth-child(1) {
+    border-top-left-radius: 10px;
+}
+.first-row td:nth-child(3) {
+    border-top-right-radius: 10px;
+}
+.users .user {
+    transition: all .3s;
+}
+.users .user:hover {
+    color: #019879;
+}
