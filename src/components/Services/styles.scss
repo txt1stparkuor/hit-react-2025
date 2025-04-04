@@ -1,0 +1,23 @@
+@use "../../styles/tools" as t;
+
+.services-wrapper {
+    background-color:#f9f9f9;
+    padding-bottom: 7vh;
+}
+.services {
+    &__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(325px,1fr));
+        gap: 1.25rem;
+    }
+}
+
+// reponsive
+
+@media (width <=500px) {
+    .services {
+        &__cards {
+            grid-template-columns: 1fr;
+        }
+    }
+}

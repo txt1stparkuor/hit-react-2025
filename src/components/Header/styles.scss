@@ -1,0 +1,120 @@
+@use "../../styles/tools" as style;
+
+.header {
+  @include style.flex($al: center);
+  position: sticky;
+  top: 0;
+  z-index: 9998;
+  background-color: style.$background-color;
+  padding-block: 1rem;
+  &__logo {
+    font-size: 1.875rem;
+    margin: 0;
+    font-weight: 700;
+    color: style.$heading-color;
+    margin-right: auto;
+  }
+  &__nav {
+    @include style.flex($al: center, $gap: 12px);
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+  &__nav-item,
+  &__dropdown-item {
+    a {
+      padding: 18px 15px;
+      color: style.$nav-color;
+      @include style.flex($al: center);
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+    a:hover {
+      color: style.$accent-color;
+    }
+  }
+  &__dropdown-item a {
+    padding: 10px 20px;
+  }
+  &__dropdown {
+    position: relative;
+    i {
+      margin-left: 5px;
+      font-size: 0.75rem;
+    }
+  }
+  &__dropdown:hover > &__dropdown-list {
+    transform: scale(1);
+    opacity: 1;
+  }
+  &__dropdown-list {
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.4s;
+    transform-origin: bottom;
+    z-index: 9998;
+    padding: 10px 0;
+    background-color: style.$nav-dropdown-background-color;
+    border-radius: 4px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+  &__side-menu {
+    right: 100%;
+    top: 0;
+    transform-origin: top right;
+  }
+  &__btn {
+    color: style.$contrast-color;
+    background: style.$accent-color;
+    font-size: 0.875rem;
+    padding: 8px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+    border: none;
+    &:hover {
+      background-color: #10bc69ce;
+    }
+  }
+  .active {
+    color: style.$accent-color;
+  }
+  &__mobile-nav-toggle {
+    color: style.$nav-color;
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.3s;
+    display: none;
+  }
+}
+
+// reponsive
+@media (width <= 991px) {
+  .header {
+    position: relative;
+    &__list {
+      display: none;
+      flex-direction: column;
+      background-color: style.$nav-dropdown-background-color;
+      z-index: 9999;
+    }
+    &__mobile-nav-toggle {
+      display: block;
+    }
+    .reponsive-list {
+      display: flex;
+      align-items: flex-start;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+    }
+    &__side-menu  {
+      left:100%;
+      transform-origin: top left;
+      width: fit-content;
+    }
+  }
+}

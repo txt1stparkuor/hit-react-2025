@@ -1,0 +1,47 @@
+@use "../../styles/tools" as t;
+.services {
+  &__card {
+    background-color: #ffffff;
+    @include t.flex(column, $al: center, $gap: 1.25rem);
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6rem 1rem;
+    transition: all 0.3s;
+    h3 {
+      font-size: 1.25rem;
+      transition: all 0.3s;
+    }
+    p {
+      font-size: 0.9375rem;
+    }
+    &:hover {
+      h3 {
+        color: t.$accent-color;
+      }
+      border: 1px solid t.$accent-color;
+    }
+  }
+  &__icon {
+    background-color: t.$accent-color;
+    width: 4rem;
+    border-radius: 0.5rem;
+    aspect-ratio: 1;
+    justify-items: center;
+    align-content: center;
+    color: t.$contrast-color;
+    font-size: 1.5rem;
+  }
+}
+
+// reponsive
+
+@media (width <= 500px) {
+  .services {
+    &__card {
+      padding: 3rem .5rem;
+    }
+    &__icon {
+      font-size: 1rem;
+    }
+  }
+}
