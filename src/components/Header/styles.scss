@@ -5,13 +5,13 @@
   position: sticky;
   top: 0;
   z-index: 9998;
-  background-color: style.$background-color;
+  background-color: var(--background-color);
   padding-block: 1rem;
   &__logo {
     font-size: 1.875rem;
     margin: 0;
     font-weight: 700;
-    color: style.$heading-color;
+    color: var(--heading-color);
     margin-right: auto;
   }
   &__nav {
@@ -25,13 +25,13 @@
   &__dropdown-item {
     a {
       padding: 18px 15px;
-      color: style.$nav-color;
+      color: var(--nav-color);
       @include style.flex($al: center);
       white-space: nowrap;
       transition: 0.3s;
     }
     a:hover {
-      color: style.$accent-color;
+      color: var(--accent-color);
     }
   }
   &__dropdown-item a {
@@ -57,7 +57,7 @@
     transform-origin: bottom;
     z-index: 9998;
     padding: 10px 0;
-    background-color: style.$nav-dropdown-background-color;
+    background-color: var(--nav-dropdown-background-color);
     border-radius: 4px;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   }
@@ -66,23 +66,11 @@
     top: 0;
     transform-origin: top right;
   }
-  &__btn {
-    color: style.$contrast-color;
-    background: style.$accent-color;
-    font-size: 0.875rem;
-    padding: 8px 25px;
-    border-radius: 50px;
-    transition: 0.3s;
-    border: none;
-    &:hover {
-      background-color: #10bc69ce;
-    }
-  }
   .active {
-    color: style.$accent-color;
+    color: var(--accent-color);
   }
   &__mobile-nav-toggle {
-    color: style.$nav-color;
+    color: var(--nav-color);
     font-size: 28px;
     cursor: pointer;
     transition: color 0.3s;
@@ -97,7 +85,7 @@
     &__list {
       display: none;
       flex-direction: column;
-      background-color: style.$nav-dropdown-background-color;
+      background-color: var(--nav-dropdown-background-color);
       z-index: 9999;
     }
     &__mobile-nav-toggle {
@@ -111,8 +99,8 @@
       left: 0;
       right: 0;
     }
-    &__side-menu  {
-      left:100%;
+    &__side-menu {
+      left: 100%;
       transform-origin: top left;
       width: fit-content;
     }

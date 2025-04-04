@@ -1,33 +1,32 @@
 @use "./variables" as style;
 
 .wrapper {
-    max-width: 1320px;
-    margin: 0 auto;
-    padding-inline: 1rem;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding-inline: 1rem;
 }
 .stacked {
-    display: grid;
+  display: grid;
 }
 .stacked > * {
-    grid-row: 1/ -1;
-    grid-column: 1/ -1;
+  grid-row: 1/ -1;
+  grid-column: 1/ -1;
 }
 .title {
-    grid-column: span 2;
-    text-align: center;
-    padding-block: 3.5rem;
-    .stacked {
-        font-size: 2rem;
-        margin-bottom: 20px;
-        h1 {
-            color: color-mix(in srgb, style.$heading-color, transparent 95%);
-            font-size: 52px;
-        }
-        span {
-            margin-top: 2rem;
-            font-size: 2rem;
-            font-weight: 550;
-        }
+  grid-column: span 2;
+  text-align: center;
+  padding-block: 3.5rem;
+  .stacked {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    h1 {
+      color: color-mix(in srgb, var(--heading-color), transparent 95%);
+      font-size: 52px;
     }
-  } 
-
+    span {
+      margin-top: 2rem;
+      font-size: 2rem;
+      font-weight: 550;
+    }
+  }
+}

@@ -38,8 +38,8 @@
     width: 94px;
     height: 94px;
     background: radial-gradient(
-      style.$accent-color 50%,
-      color-mix(in srgb, style.$accent-color, transparent 75%) 52%
+      var(--accent-color) 50%,
+      color-mix(in srgb, var(--accent-color), transparent 75%) 52%
     );
     @include style.flex($jc: center, $al: center);
     border-radius: 50%;
@@ -50,7 +50,7 @@
       transform: scale(1.1);
     }
     font-size: 2rem;
-    color: style.$contrast-color;
+    color: var(--contrast-color); // Changed
     &::before {
       content: "";
       position: absolute;
@@ -58,7 +58,7 @@
       height: 94px;
       animation: pulsate-play-btn 2s infinite;
       border-radius: 50%;
-      border: 5px solid color-mix(in srgb, style.$accent-color, transparent 30%);
+      border: 5px solid color-mix(in srgb, var(--accent-color), transparent 30%); // Changed
       background: #c6100000;
     }
     @keyframes pulsate-play-btn {
@@ -75,7 +75,7 @@
 
   &__content {
     @include style.flex($direction: column, $gap: 0.5rem);
-    color: style.$default-color;
+    color: var(--default-color); // Changed
     margin-left: 2rem;
     h2 {
       font-size: 1.75rem;
@@ -87,12 +87,12 @@
   &__check-item {
     display: flex;
     h2 {
-      color: style.$heading-color;
+      color: var(--heading-color); // Changed
     }
     gap: 0.5rem;
     margin-bottom: 0.5rem;
     i {
-      color: style.$accent-color;
+      color: var(--accent-color); // Changed
     }
   }
 
@@ -108,10 +108,14 @@
     h1 {
       margin-bottom: 1rem;
       font-size: 2.5rem;
-      color: style.$accent-color;
+      color: var(--accent-color); 
     }
     p {
-      color: color-mix(in srgb, style.$default-color, transparent 40%);
+      color: color-mix(
+        in srgb,
+        var(--default-color),
+        transparent 40%
+      ); 
     }
     flex: 1;
   }
@@ -153,7 +157,7 @@
 @media (width <= 450px) {
   .about-us {
     &__data {
-      flex : 1 1 100%;
+      flex: 1 1 100%;
     }
   }
 }

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./styles.scss";
-function Header() {
+import ToggleBtn from "../ToggleBtn/ToggleBtn";
+function Header({ isDark, handleChangeTheme }) {
   const [isReponsiveList, setIsReponsiveList] = useState(false);
   function handleListReponsive() {
     setIsReponsiveList(!isReponsiveList);
@@ -78,7 +79,10 @@ function Header() {
             <a href="#">Contact</a>
           </li>
         </ul>
-        <button className="header__btn">Get Started</button>
+        <ToggleBtn
+          isDark={isDark}
+          handleChangeTheme={handleChangeTheme}
+        ></ToggleBtn>
         <i
           onClick={handleListReponsive}
           className="header__mobile-nav-toggle d-xl-none bi bi-list"

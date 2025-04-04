@@ -12,10 +12,10 @@
       font-size: 3rem;
       font-weight: 700;
       line-height: 56px;
-      color: style.$heading-color;
+      color: var(--heading-color);
     }
     p {
-      color: color-mix(in srgb, style.$default-color, transparent 30%);
+      color: color-mix(in srgb, var(--default-color), transparent 30%);
       margin: 5px 0 30px 0;
       font-size: 1.25rem;
       font-weight: 400;
@@ -24,8 +24,8 @@
   &__btn-wrap {
     @include style.flex($gap: 1rem);
     button {
-      color: style.$contrast-color;
-      background: style.$accent-color;
+      color: var(--contrast-color);
+      background: var(--accent-color);
       font-size: 1rem;
       padding: 10px 28px 12px 28px;
       border-radius: 50px;
@@ -33,24 +33,24 @@
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
       border: none;
       &:hover {
-        background: color-mix(in srgb, style.$accent-color, transparent 15%);
+        background: color-mix(in srgb, var(--accent-color), transparent 15%);
       }
     }
   }
   &__watch-video {
     transition: 0.5s;
     &:hover {
-      color: style.$accent-color;
+      color: var(--accent-color);
     }
     @include style.flex($al: center);
     i {
-      color: style.$accent-color;
+      color: var(--accent-color);
       font-size: 2rem;
       margin-right: 0.5rem;
     }
     span {
       font-size: 1rem;
-      color: style.$default-color;
+      color: var(--default-color);
       font-weight: 600;
     }
   }
