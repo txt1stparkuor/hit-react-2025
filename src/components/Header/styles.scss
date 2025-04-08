@@ -81,7 +81,6 @@
 // reponsive
 @media (width <= 991px) {
   .header {
-    position: relative;
     &__list {
       display: none;
       flex-direction: column;
