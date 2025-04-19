@@ -1,4 +1,4 @@
-@mixin flex($direction: null, $jc: null, $al: null, $gap: null) {
+@mixin flex($jc: null, $al: null, $gap: null, $direction: null) {
   display: flex;
 
   @if $direction != null {

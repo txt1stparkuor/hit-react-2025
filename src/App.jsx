@@ -1,48 +1,111 @@
-import { useMemo, useRef, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import "./App.css";
 import "./styles/index.scss";
 
+import SearchBar from "./components/SearchBar/SearchBar";
+import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import Forecast from "./components/Forecast/Forecast";
+import { getUnits } from "./components/WeatherUtils/WeatherUtils";
+
 function App() {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [products, setProducts] = useState([]);
-  const nameRef=useRef()
-  const handleSubmit = () => {
-    setProducts([...products, { name, price: parseInt(price) }]);
-    setName("");
-    setPrice("");
-    nameRef.current.focus();
+  const [currentWeather, setCurrentWeather] = useState({});
+  const [forecast, setForecast] = useState([]);
+  const [location, setLocation] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [units, setUnits] = useState("metric");
+
+  const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY;
+  const toggleUnits = () => {
+    if (units === "metric") {
+      setUnits("imperial");
+    } else {
+      setUnits("metric");
+    }
   };
-  const total = useMemo(() => {
-    return products.reduce((sum, product) => sum + product.price, 0);
-  }, [products])  
+
+  const { tempUnit, speedUnit } = getUnits(units);
+
+  const fetchWeather = async (city) => {
+    if (!city) return;
+
+    setLoading(true);
+    setError("");
+
+    try {
+      const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${API_KEY}`;
+      const currentResponse = await axios.get(currentWeatherUrl);
+      setCurrentWeather(currentResponse.data);
+
+      const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=${units}&appid=${API_KEY}`;
+      const forecastResponse = await axios.get(forecastUrl);
+
+      const dailyData = forecastResponse.data.list.filter(
+        (reading, index) => index % 8 === 0
+      );
+
+      setForecast(dailyData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+      setError("City not found or error fetching data. Please try again.");
+      setCurrentWeather({});
+      setForecast([]);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (currentWeather.name) {
+      fetchWeather(currentWeather.name);
+    }
+  }, [units]);
+
+  const handleSearch = () => {
+    if (location.trim()) {
+      fetchWeather(location);
+      setLocation("");
+    }
+  };
+
+  const searchLocation = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Enter name..."
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        ref={nameRef}
-      />
-      <br />
-      <input
-        type="text"
-        placeholder="Enter price..."
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-      <button onClick={handleSubmit}>Add</button>
+    <div className="app">
+      <div className="overlay"></div>
 
-      <ul>
-        {products.map((product, index) => (
-          <li key={index}>
-            {product.name}: {product.price}
-          </li>
-        ))}
-      </ul>
+      <div className="container">
+        <SearchBar
+          location={location}
+          setLocation={setLocation}
+          handleSearch={handleSearch}
+          searchLocation={searchLocation}
+          toggleUnits={toggleUnits}
+          units={units}
+        />
 
-      <p>Total: {total}</p>
+        {error && <div className="error-message">{error}</div>}
+        {loading && <div className="loading">Loading...</div>}
+
+        {currentWeather.main && (
+          <>
+            <CurrentWeather
+              currentWeather={currentWeather}
+              tempUnit={tempUnit}
+              speedUnit={speedUnit}
+            />
+
+            {forecast.length > 0 && (
+              <Forecast forecast={forecast} tempUnit={tempUnit} />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

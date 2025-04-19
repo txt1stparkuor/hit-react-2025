@@ -1,1 +1,11 @@
-@use "./variables" as style;
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.stacked {
+  display: grid;
+}
+.stacked > * {
+  grid-column: 1/-1;
+  grid-row: 1/-1;
+}

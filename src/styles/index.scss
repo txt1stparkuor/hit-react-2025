@@ -1,2 +1,3 @@
-@use 'base';
-@use 'utilities';
+@forward "./variables";
+@forward "./base";
+@forward "./utilities";
