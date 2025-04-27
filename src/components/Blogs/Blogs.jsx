@@ -2,9 +2,9 @@ import React from "react";
 import "./styles.scss";
 import Blog from "../Blog/Blog";
 
-function Blogs({blogs, handleDeleteBlogs, formik}) {
+function Blogs({blogs, handleDeleteBlogs, handleEditBlogs}) {
   return (
-    <table className="blogs">
+    <table className="blogs" border={1}>
       <thead>
         <tr>
           <th>id</th>
@@ -16,7 +16,7 @@ function Blogs({blogs, handleDeleteBlogs, formik}) {
       </thead>
       <tbody>
         {blogs.map((blog)=> {
-            return <Blog blog={blog} key={blog.id} handleDeleteBlogs={handleDeleteBlogs} formik={formik}></Blog>
+            return <Blog blog={blog} key={blog.id} handleDeleteBlogs={handleDeleteBlogs} handleEditBlogs={handleEditBlogs}></Blog>
         })}
       </tbody>
     </table>

@@ -1,21 +1,9 @@
 import React, { useState } from "react";
 import Blogs from "./components/Blogs/Blogs";
-import { useFormik } from "formik";
 import "./styles/index.scss";
 import "./App.scss";
 import InputForm from "./components/InputForm/InputForm";
 function App() {
-  const formik = useFormik({
-    initialValues: {
-      id: "",
-      name: "",
-      image: "",
-      desc: "",
-    },
-    onSubmit: (values) => {
-      setBlogs(b=> [...b,values])
-    },
-  });
   const [blogs, setBlogs] = useState([
     {
       id: 1,
@@ -25,24 +13,27 @@ function App() {
       desc: "nau an",
     },
   ]);
-  const handleDeleteBlogs=(id) => {
-    const updatedBlogs= blogs.filter((blog) => blog.id!==id);
+  const handleAddBlogs = (blog) => {
+    setBlogs((b) => [...b, blog]);
+  };
+  const handleDeleteBlogs = (id) => {
+    const updatedBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(updatedBlogs);
-  }
-  const handleEditBlogs=(id, updated) => {
-    const updatedBlogs= blogs.map((blog) => {
-      if (blog.id === id) return {...blog, ...updated }
+  };
+  const handleEditBlogs = (id, updated) => {
+    const updatedBlogs = blogs.map((blog) => {
+      if (blog.id === id) return { ...blog, ...updated };
       else return blog;
-    })
-    setBlogs(updatedBlogs)
-  }
+    });
+    setBlogs(updatedBlogs);
+  };
   return (
     <div className="container">
       <div className="wrapper">
         <h1>Quản lý Blog</h1>
       </div>
-      <InputForm formik={formik}></InputForm>
-      <Blogs blogs={blogs} handleDeleteBlogs={handleDeleteBlogs} formik={formik}></Blogs>
+      <InputForm handleAddBlogs={handleAddBlogs} formType="add"></InputForm>
+      <Blogs blogs={blogs} handleDeleteBlogs={handleDeleteBlogs} handleEditBlogs={handleEditBlogs}></Blogs>
     </div>
   );
 }

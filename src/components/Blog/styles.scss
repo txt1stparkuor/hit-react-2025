@@ -1,0 +1,17 @@
+@use "../../styles/mixins" as *;
+.blog {
+  text-align: center;
+
+  &__img {
+    max-width: 100px;
+    img {
+      object-fit: cover;
+      aspect-ratio: 1;
+    }
+  }
+  &__action {
+    &:hover {
+      background-color: darken($color: #fff1a6, $amount: 10);
+    }
+  }
+}
