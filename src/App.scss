@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    h1 {
+        font-weight: 500;
+    }
+    button {
+        border: 3px solid #fff6c5;
+        background-color: #fff;
+        padding: .25rem;
+    }
+}
+.container {
+    display: flex;
+    flex-direction: column;
+}
