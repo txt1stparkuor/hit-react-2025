@@ -1,0 +1,54 @@
+@use "../../styles/mixins" as *;
+
+.center-wrap {
+  @include flex(center,center);
+  min-height: 100vh;
+  padding-inline: 4vw;
+}
+.auth-form {
+  padding: 2rem 3rem;
+  box-shadow: 0 0 12px #0000001a;
+  border-radius: 0.2rem;
+  position: relative;
+  width: 500px;
+  @include flex($gap: 2rem, $di: column);
+
+  &__title {
+    font-size: 1.75rem;
+    text-align: center;
+  }
+
+  &__field {
+    @include flex($di: column, $gap: 0.5rem);
+  }
+  &__input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+  }
+  &__error {
+    color: red;
+    font-size: 0.875rem;
+  }
+  &__close {
+    position: absolute;
+    top: -0.75rem;
+    right: -0.75rem;
+    width: 2.5rem;  
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #000;
+    @include flex(center,center);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    &:hover {
+      background-color: #ff0000;
+    }
+  }
+  &>div:last-child {
+    text-align: center; 
+  }
+}

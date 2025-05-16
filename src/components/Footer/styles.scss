@@ -1,0 +1,35 @@
+@use "../../styles/mixins" as *;
+.footer {
+  padding-block: 3.5rem;
+  @include flex(space-between, center);
+  &__nav {
+    @include flex($gap: 1.25rem);
+    font-size: 0.9375rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  &__right {
+    @include flex($gap: 1.5rem);
+    i {
+      font-size: 1.25rem;
+      color: #0d6efd;
+      cursor: pointer;
+    }
+  }
+}
+
+@media (width < 600px ){
+    .footer {
+        flex-direction: column;
+        &__nav {
+            justify-content: space-between;
+        }
+        &__copyright {
+            font-size: .875rem;
+        }
+        &__right {
+            margin-top: 1rem;
+        }
+    }
+}

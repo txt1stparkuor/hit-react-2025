@@ -1,0 +1,34 @@
+@use "../../styles/mixins" as *;
+
+.testimonial-container {
+  background-color: #f8f9fa;
+  text-align: center;
+  padding-block: 5rem;
+  h2 {
+    margin-bottom: 2rem;
+  }
+  .testimonials {
+    @include flex(center, $gap: 1rem);
+    .testimonial {
+      @include flex(null, center, $di: column, $gap: 0.5rem);
+      padding: 1.5rem;
+      flex: 1;
+      &__avatar {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 1px 1px 5px #adb5bd;
+      }
+      &__comment {
+        font-size: 0.9375rem;
+      }
+    }
+  }
+}
+
+@media (width <= 768px) {
+  .testimonials {
+    flex-direction: column;
+  }
+}

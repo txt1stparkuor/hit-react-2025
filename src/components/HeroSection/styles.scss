@@ -1,0 +1,22 @@
+.hero-section {
+  place-items: center;
+  text-align: center;
+  &__text {
+    font-size: 3rem;
+    color: #fff;
+    width: 70%;
+    z-index: 5;
+    font-weight: 500;
+    padding: 0 3rem;
+  }
+  img {
+    height: 84vh;
+  }
+}
+@media (width <768px) {
+  .hero-section {
+    &__text {
+      font-size: 2.25rem;
+    }
+  }
+}

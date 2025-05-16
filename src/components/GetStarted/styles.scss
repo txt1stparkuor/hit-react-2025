@@ -1,0 +1,33 @@
+@use "../../styles/mixins" as *;
+.get-started {
+  place-items: center;
+  &__wrapper {
+    h1 {
+      color: #fff;
+      font-weight: 600;
+    }
+    @include flex(center, center, $gap: 1rem, $di: column);
+  }
+  img {
+    max-height: 20rem;
+  }
+}
+
+@media (width < 600px) {
+  .get-started {
+    &__wrapper {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+@media (width < 450px) {
+  .get-started {
+    &__wrapper {
+      h1 {
+        font-size: 1.125rem;
+      }
+    }
+  }
+}

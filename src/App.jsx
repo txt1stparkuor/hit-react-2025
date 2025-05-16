@@ -1,41 +1,19 @@
-import React, { useState } from "react";
-import Blogs from "./components/Blogs/Blogs";
 import "./styles/index.scss";
-import "./App.scss";
-import InputForm from "./components/InputForm/InputForm";
+import Home from "./pages/Home/Home";
+import { useRoutes } from "react-router-dom";
+import AboutUs from "./pages/AboutUs/AboutUs";
+import Contact from "./pages/Contact/Contact";
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 function App() {
-  const [blogs, setBlogs] = useState([
-    {
-      id: 1,
-      name: "Cooking with magic",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/4/4d/Cat_November_2010-1a.jpg",
-      desc: "nau an",
-    },
+  const elements = useRoutes([
+    { path: "/", element: <Home></Home> },
+    { path: "/about-us", element: <AboutUs></AboutUs> },
+    { path: "contact", element: <Contact></Contact> },
+    { path: "login", element: <Login></Login> },
+    { path: "register", element: <Register></Register> },
   ]);
-  const handleAddBlogs = (blog) => {
-    setBlogs((b) => [...b, blog]);
-  };
-  const handleDeleteBlogs = (id) => {
-    const updatedBlogs = blogs.filter((blog) => blog.id !== id);
-    setBlogs(updatedBlogs);
-  };
-  const handleEditBlogs = (id, updated) => {
-    const updatedBlogs = blogs.map((blog) => {
-      if (blog.id === id) return { ...blog, ...updated };
-      else return blog;
-    });
-    setBlogs(updatedBlogs);
-  };
-  return (
-    <div className="container">
-      <div className="wrapper">
-        <h1>Quản lý Blog</h1>
-      </div>
-      <InputForm handleAddBlogs={handleAddBlogs} formType="add"></InputForm>
-      <Blogs blogs={blogs} handleDeleteBlogs={handleDeleteBlogs} handleEditBlogs={handleEditBlogs}></Blogs>
-    </div>
-  );
+  return elements;
 }
 
 export default App;
