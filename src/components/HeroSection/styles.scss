@@ -20,3 +20,10 @@
     }
   }
 }
+@media (width <500px) {
+    .hero-section {
+    &__text {
+      font-size: 1.5rem;
+    }
+  }
+}
