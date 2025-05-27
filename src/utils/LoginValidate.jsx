@@ -7,6 +7,5 @@ export const LoginValidate = Yup.object({
   password: Yup.string()
     .trim()
     .required("Password la bat buoc")
-    .min(6, "Mat khau phai co it nhat 6 ki tu"),
+    .min(6, "Password phai co it nhat 6 ki tu"),
 });
-    
