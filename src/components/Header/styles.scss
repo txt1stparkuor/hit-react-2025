@@ -1,10 +1,19 @@
+@use "../../styles/mixins" as *;
+
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-block: 1rem;
-  &__logo {
-    font-size: 1.125rem;
-    font-weight: 400;
-  }
+    font-family: "Inter", sans-serif;
+    margin-top: 3rem;
+    @include flex(space-between,center);
+    &__right {
+        @include flex($gap:2rem);
+    }
+}
+@media (width <=676px) {
+    .header {
+        &__right {
+            button {
+                padding-inline:3rem ;
+            }
+        }
+    }
 }

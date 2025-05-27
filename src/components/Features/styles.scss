@@ -1,32 +1,83 @@
 @use "../../styles/mixins" as *;
-
 .features {
-  @include flex($gap: 2rem);
-  padding-block: 5rem;
-  i {
-    font-size: 3.5rem;
-    color: #0d6efd;
-  }
-  .feature {
-    padding: 1.75rem 1rem;
+  margin-top: 10rem;
+  &__title {
+    font-weight: 700;
+    font-size: 40px;
     text-align: center;
-    @include flex($di: column, $gap: 1rem);
-    &__title {
-      font-size: 1.75rem;
-      font-weight: 600;
-      color: #212529;
-    }
-    &__desc {
-      font-size: 1.25rem;
-      font-weight: 100;
-      color: #656769;
-      text-align: center;
+    margin-bottom: 50px;
+  }
+  &__desc {
+    color: #4b5d68;
+    margin: 0 auto;
+    font-style: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 70px;
+    max-width: 575px;
+  }
+  .features-container {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(525px, 1fr));
+    gap: 38px;
+    row-gap: 45px;
+    .feature {
+      max-width: 525px;
+      &__img {
+        align-self: center;
+      }
+      &__bg {
+        margin-left: 100px;
+      }
+      &__content {
+        @include flex(space-between, $di: column, $gap: 1.25rem);
+        margin-left: 280px;
+        padding-right: 50px;
+        padding-block: 50px;
+        max-width: 100%;
+      }
+      &__title {
+        color: #212353;
+        margin-bottom: 1.25rem;
+      }
+      &__desc {
+        color: #4b5d68;
+        line-height: 160%;
+      }
+      &__learn-more {
+        p {
+          font-weight: 700;
+        }
+        @include flex(null, center, $gap: 10px);
+      }
     }
   }
 }
 
-@media (width < 800px) {
+@media (width <= 600px) {
   .features {
-    flex-direction: column;
-  } 
+    .features-container {
+      .feature {
+        &__img {
+          max-width: 125px;
+          img {
+            object-fit: cover;
+          }
+        }
+        &__bg {
+          margin-left: 75px;
+          max-width: 350px;
+        }
+        &__content {
+          margin-left:120px;
+          padding-right: 50px;
+        }
+        &__desc {
+          font-size: 14px;
+          padding-right: 50px;
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,58 @@
+@use "../../styles/mixins" as *;
+.logo-wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+.center-wrap {
+  @include flex(center, center, $di: column);
+  min-height: 60vh;
+  &__title {
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 64px;
+    text-align: center;
+  }
+}
+
+.sign-in {
+  @include flex(null, center, $di: column, $gap: 1.5rem);
+  width: 100%;
+  max-width: 450px;
+  padding: 2rem;
+  &__field {
+    width: 100%;
+    @include flex($di: column, $gap: 0.5rem);
+    & > * {
+      width: 100%;
+    }
+  }
+  &__input {
+    border-radius: 6px;
+    border-width: 1px;
+    background: #fdfdfd;
+    border: 1px solid #000000;
+    padding: 0.75rem;
+  }
+  &__api-message {
+    padding: 10px 15px;
+    border-radius: 5px; 
+    font-size: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+  }
+
+  &__api-message--error {
+    background-color: #dc3545;
+    border: 1px solid darken(#dc3545, 10%);
+  }
+
+  &__api-message--success {
+    background-color: #28a745;
+    border: 1px solid darken(#28a745, 10%);
+  }
+  button {
+    width: 100%;    
+  }
+}

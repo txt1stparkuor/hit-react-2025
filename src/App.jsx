@@ -1,19 +1,56 @@
-import "./styles/index.scss";
+import React, { useState, useEffect } from "react";
 import Home from "./pages/Home/Home";
-import { useRoutes } from "react-router-dom";
-import AboutUs from "./pages/AboutUs/AboutUs";
-import Contact from "./pages/Contact/Contact";
-import Register from "./pages/Register/Register";
-import Login from "./pages/Login/Login";
+import SignIn from "./pages/SignIn/SignIn";
+import { useRoutes, Navigate, useNavigate } from "react-router-dom";
+import "./styles/index.scss";
+import Profile from "./pages/Profile/Profile";
 function App() {
-  const elements = useRoutes([
-    { path: "/", element: <Home></Home> },
-    { path: "/about-us", element: <AboutUs></AboutUs> },
-    { path: "contact", element: <Contact></Contact> },
-    { path: "login", element: <Login></Login> },
-    { path: "register", element: <Register></Register> },
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [authToken, setAuthToken] = useState(null);
+  const navigate=useNavigate()
+  useEffect(() => {
+    const storedToken = localStorage.getItem("authToken");
+    if (storedToken) {
+      setIsAuthenticated(true);
+      setAuthToken(storedToken);
+    }
+  }, []);
+
+  const handleLoginSuccess = (token) => {
+    setIsAuthenticated(true);
+    setAuthToken(token);
+    localStorage.setItem("authToken", token);
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    setAuthToken(null);
+    localStorage.removeItem("authToken");
+    navigate("/")
+  };
+
+  let element = useRoutes([
+    {
+      path: "/",
+      element: (
+        <Home isAuthenticated={isAuthenticated} onLogout={handleLogout} />
+      ),
+    },
+    {
+      path: "/signin",
+      element: isAuthenticated ? (
+        <Navigate to="/" />
+      ) : (
+        <SignIn onLoginSuccess={handleLoginSuccess} />
+      ),
+    },
+    {
+      path: "/profile",
+      element: <Profile  onLogout={handleLogout}/>,
+    },
   ]);
-  return elements;
+
+  return <>{element}</>;
 }
 
 export default App;

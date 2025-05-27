@@ -1,29 +1,56 @@
+@use "../../styles/mixins" as *;
+
 .hero-section {
-  place-items: center;
-  text-align: center;
-  &__text {
-    font-size: 3rem;
-    color: #fff;
-    width: 70%;
-    z-index: 5;
-    font-weight: 500;
-    padding: 0 3rem;
-  }
-  img {
-    height: 84vh;
-  }
-}
-@media (width <768px) {
-  .hero-section {
-    &__text {
-      font-size: 2.25rem;
+  position: relative;
+  margin-top: 8rem;
+  @include flex();
+  &__content {
+    max-width: 60%;
+    @include flex(null, flex-start, $di: column, $gap: 3rem);
+    h1 {
+      font-weight: 700;
+      font-size: 5rem;
+      color: #212353;
+    }
+    p {
+      color: #4b5d68;
+      font-weight: 500;
+      font-size: 1.125rem;
+      max-width: 370px;
+    }
+    button {
+      padding: 1rem 2rem;
     }
   }
+  &__img {
+    position: absolute;
+    top: 100px;
+    right: 0;
+  }
 }
-@media (width <500px) {
-    .hero-section {
-    &__text {
-      font-size: 1.5rem;
+
+@media (width <= 1130px) {
+  .hero-section {
+    flex-direction: column;
+
+    &__content {
+      h1 {
+        font-size: 3rem;
+      }
+      gap: 1rem;
+      max-width: none;
+      p {
+        max-width: none;
+      }
+    }
+    &__img {
+      flex: 1;
+      position: static;
+      order: -1;
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 }

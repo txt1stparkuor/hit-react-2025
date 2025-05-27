@@ -1,0 +1,103 @@
+@use "../../styles/mixins" as *;
+.testimonials {
+  margin-top: 5rem;
+  border-radius: 50px;
+  margin-bottom: 90px;
+  background-color: var(--accent-color);
+  padding: 0 2rem 3rem;
+  .testimonial-wrap {
+    @include flex(center, center, $gap: 24px);
+  }
+  .bi {
+    color: #fff;
+    font-size: 2rem;
+    transition: all 0.25s;
+    &:hover {
+      color: #ffffffb3;
+    }
+  }
+  &__title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 130%;
+    padding: 90px 56px;
+  }
+  .testimonial {
+    @include flex($gap: 40px);
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 20px 0px 0px #8a57db;
+    padding: 6rem 100px;
+    &__avatar {
+      width: 260px;
+      height: 90px;
+      border-radius: 50%;
+      overflow: hidden;
+      object-fit: cover;
+    }
+    &__name {
+      font-size: 18px;
+      line-height: 160%;
+    }
+    &__company {
+      font-size: 14px;
+      color: var(--accent-color);
+      margin-bottom: 1rem;
+    }
+    &__desc {
+      color: #4b5d68;
+      font-size: 18px;
+      line-height: 180%;
+      max-width: 70%;
+    }
+  }
+  &__paginations {
+    @include flex(center, $gap: 10px);
+    margin-top: 4rem;
+  }
+  &__circle {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    &.active {
+      background-color: var(--second-color);
+      transform: scale(2);
+    }
+  }
+}
+
+@media (width <=992px) {
+  .testimonials {
+    &__title {
+      padding: 3rem 56px;
+    }
+    .testimonial {
+      flex-direction: column;
+
+      align-items: center;
+      padding: 3rem;
+      &__desc {
+        max-width: none;
+      }
+      &__avatar {
+        aspect-ratio: 1;
+        width: auto;
+      }
+    }
+  }
+}
+@media (width <=767px) {
+  .testimonials {
+    &__title {
+      padding: 1rem 54px;
+    }
+    .testimonial {
+      padding: 3rem;
+      &__desc {
+        max-width: none;
+      }
+    }
+  }
+}

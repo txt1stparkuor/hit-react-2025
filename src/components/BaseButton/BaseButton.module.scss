@@ -1,15 +1,19 @@
+@use "sass:color";
+
 .btn {
-  background-color: #0d6efd;
   color: #fff;
-  padding: .75rem 1rem;
-  font-size: 0.9375rem;
-  font-weight: 400;
-  border-radius: 0.375rem;
+  padding: 1.125rem 5rem;
+  font-size: 1.125rem;
+  font-weight: 700;
   border: none;
   outline: none;
+  border-radius: 50px;
   transition: all 0.3s ease;
   cursor: pointer;
+  background-color: #9c69e2;
   &:hover {
-    background-color: #0b5ed7;
+    background-color: color.adjust(#9c69e2, $lightness: -10%);
   }
+  box-shadow: 0px 5px 5px 0px #4b5d681a;
+  font-family: "Inter", sans-serif;
 }
