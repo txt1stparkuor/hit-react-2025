@@ -3,7 +3,7 @@ import "./styles.scss";
 function AboutUs() {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoSrc =
-    "https://www.youtube.com/embed/Y7f98aduVJ8?si=8xpRr8HBZxdhxPbs";
+    "https://www.youtube.com/embed/91md6S2Vg4U?si=uj1dMPIbFZ2yNad-";
   function handlePlayVideo() {
     setIsPlaying(true);
   }
